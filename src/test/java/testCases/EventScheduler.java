@@ -16,13 +16,13 @@ public class EventScheduler {
 		
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		
 		try {
             //Navigate the Event Scheduler
             driver.get("event_scheduler_url");
 
-            // Fill in the event creation form
+            // Fill in the event create form
             WebElement eventNameInput = driver.findElement(By.id("event_name"));
             eventNameInput.sendKeys("Example Event Name");
 
@@ -49,7 +49,8 @@ public class EventScheduler {
             assert eventDate.equals("2024-02-11") : "Event date doesn't match";
             assert participantsEmail.equals("participant1@example.com, participant2@example.com, participant2@example.com") : "Participants list doesn't match";
 
-            System.out.println("Test passed: Event creation and verification successful");
+            System.out.println("Passed: Event creation and verification successful");
+            
 
         } 
 		
@@ -58,6 +59,7 @@ public class EventScheduler {
             e.printStackTrace();
         } 
 		
+		// Close the browser
 		finally 
 		{
             driver.quit();
